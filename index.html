@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To Do List</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
+        <link rel="stylesheet" href="https://static.fontawesome.com/css/fontawesome-app.css">
+        <link href="./external.css" rel="stylesheet" />
+    </head>
+    <body class="columns is-gapless" >
+        <section id="left-menu"  class="column is-one-quarter">
+            <ul id="menu-list" class="menu-list m-4">
+                <li title="All tasks"><a class="has-background-primary-light"><i class="fa-solid fa-thumbtack mr-5"></i>Tasks</a></li>
+                <li onclick="getImportant()" title="Tasks marked important"><a class="has-text-light"><i class="fa-regular fa-star mr-5"></i>Important</a></li>
+                <li title="Tasks with a due date"><a class="has-text-light"><i class="fa-regular fa-bell mr-5"></i>Reminders</a></li>
+                <hr style="background-color: #484644; height: 2px; margin: 5px;">
+                <li title="Tasks due today"><a class="has-text-light"><i class="fa-solid fa-calendar-day mr-5"></i>Today</a></li>
+                <li title="Tasks due tomorrow"><a class="has-text-light"><i class="fa-regular fa-calendar-plus mr-5"></i>Tomorrow</a></li>
+                <li title="Tasks due this week"><a class="has-text-light"><i class="fa-solid fa-calendar-week mr-5"></i>This week</a></li>
+                <hr style="background-color: #484644; height: 2px; margin: 5px;">
+                <li title="Completed tasks"><a class="has-text-light"><i class="fa-regular fa-circle-check mr-5"></i>Completed</a></li>
+                <li title="Incomplete tasks past due date"><a class="has-text-light"><i class="fa-solid fa-hourglass-end mr-5"></i>Overdue</a></li>
+                <li title="Tasks without a due date"><a class="has-text-light"><i class="fa-regular fa-clock mr-5"></i>Not Due</a></li>
+                <hr style="background-color: #484644; height: 2px; margin: 5px;">
+                <span id="added-lists"></span>
+            </ul>
+            <div id="add-tab" class="m-5">   
+                <form onsubmit="addNewList()">
+                    <button type="button" id="add-list" class="button is-primary is-fullwidth">
+                        <input id="new-list-input" class="input is-fullwidth" type="text" placeholder="Add List" required>
+                    </button>
+                </form>
+            </div>
+        </section> 
+        <section id="tasks" class="column">
+            <div class="columns m-5">
+                <div class="column is-half is-offset-one-quarter">
+                    <button onclick="openTaskEditor()" class="button is-primary is-fullwidth">Add a New Task</button>
+                </div>
+            </div>
+            <div id="task-list" class="m-5">
+                
+            </div>
+        </section>
+        <section id="task-editor" class="column is-one-quarter">
+            <div class="my-2 ml-5 mr-2">
+                <button onclick="closeTaskEditor()" class="delete is-large my-2"></button>
+                <input id="task-title-input" class="input is-primary is-fullwidth p-5" type="text" placeholder="New Task"  required />
+            </div>
+            <div class="my-2 ml-5 mr-2">
+                <label class="input is-primary is-fullwidth">
+                    <input id="task-important-input" type="checkbox" class="is-primary mx-3">
+                    Mark Important
+                </label>
+            </div>
+            
+            <div class="my-2 ml-5 mr-2">
+                <input id="task-reminder-input" class="input is-primary is-fullwidth p-5" type="datetime-local" placeholder="Remind Me">
+                <input id="task-duedate-input" class="input is-primary is-fullwidth p-5" type="datetime-local" placeholder="Due Date">
+            </div>
+            <div class="my-2 ml-5 mr-2">
+                <div class="select is-primary is-fullwidth">
+                    <select id="list-selector">
+                        <option>Select List</option>
+                    </select>
+                </div>
+            </div>
+            <div class="my-2 ml-5 mr-2">
+                <textarea class="textarea is-success" id="task-note-input" placeholder="Add a Note" required></textarea>
+            </div>
+            <div class="my-2 ml-5 mr-2">
+                <button id="create-task-btn" onclick="addNewTask()" class="button is-success is-fullwidth">Create Task</button>
+            </div>
+        </section>
+        <script src="external.js"></script>
+        <script src="https://kit.fontawesome.com/d3a85aa66e.js" crossorigin="anonymous"></script>
+    </body>
+</html>
